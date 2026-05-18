@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lawrence Kimani — Legal Tech & Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-dim: #7A6130;
+    --dark: #0E0E0E;
+    --dark-2: #161616;
+    --dark-3: #1F1F1F;
+    --dark-4: #2A2A2A;
+    --text: #F0EEE8;
+    --text-muted: #8A8880;
+    --text-dim: #5A5855;
+    --border: rgba(201,168,76,0.15);
+    --border-bright: rgba(201,168,76,0.4);
+    --radius: 4px;
+    --radius-lg: 10px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(14,14,14,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { padding-right: 3rem; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .hero-bio {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    padding: 0.75rem 2rem;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    padding: 0.75rem 2rem;
+    background: transparent;
+    color: var(--gold);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    border: 0.5px solid var(--border-bright);
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: rgba(201,168,76,0.08); border-color: var(--gold); }
+
+  .hero-card {
+    background: var(--dark-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    position: relative;
+  }
+  .hero-card::before {
+    content: 'LK';
+    position: absolute;
+    top: -1.5rem;
+    left: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    background: var(--dark-2);
+    padding: 0.2rem 0.6rem;
+    border: 0.5px solid var(--border-bright);
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+  }
+  .avatar-ring {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    background: var(--dark-3);
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 1.5rem;
+  }
+  .stat {
+    padding: 1rem;
+    text-align: center;
+    border-right: 0.5px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .badge {
+    font-size: 0.7rem;
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid rgba(201,168,76,0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ─── SECTION SHARED ─── */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 3rem;
+    max-width: 600px;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0.5px;
+    background: var(--border);
+  }
+  .timeline-item {
+    padding-left: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--dark);
+  }
+  .timeline-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .timeline-role {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .timeline-org {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  .timeline-desc {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  /* ─── CERTIFICATES GRID ─── */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .cert-card {
+    background: var(--dark-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .cert-card:hover {
+    border-color: var(--border-bright);
+    transform: translateY(-2px);
+  }
+  .cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at top right, rgba(201,168,76,0.07), transparent 70%);
+    pointer-events: none;
+  }
+  .cert-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid rgba(201,168,76,0.2);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  .cert-title {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+  .cert-issuer {
+    font-size: 0.78rem;
+    color: var(--gold-dim);
+    margin-bottom: 0.75rem;
+    font-family: 'DM Mono', monospace;
+  }
+  .cert-date {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+  .cert-verify {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    color: var(--gold);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+    border-bottom: 0.5px solid rgba(201,168,76,0.3);
+    transition: border-color 0.2s;
+  }
+  .cert-verify:hover { border-color: var(--gold); }
+
+  /* ─── PROJECTS ─── */
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--dark-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-color: var(--border-bright); }
+  .project-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .project-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+  .project-stack {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+  .stack-pill {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    border: 0.5px solid var(--border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+  }
+  .project-visual {
+    background: var(--dark-3);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    line-height: 1.9;
+  }
+  .code-green { color: #4caf80; }
+  .code-blue { color: #5fa8d3; }
+  .code-gold { color: var(--gold); }
+
+  /* ─── TOOLKIT ─── */
+  .toolkit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .tool-card {
+    background: var(--dark-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: border-color 0.2s;
+  }
+  .tool-card:hover { border-color: var(--border-bright); }
+  .tool-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .tool-icon-box {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    background: rgba(201,168,76,0.08);
+    border: 0.5px solid rgba(201,168,76,0.2);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+  }
+  .tool-name {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .tool-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .tool-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .tool-features {
+    list-style: none;
+  }
+  .tool-features li {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    padding: 0.3rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .tool-features li::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-section {
+    background: var(--dark-2);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 5rem 3rem;
+    text-align: center;
+  }
+  .contact-section .section-title { margin: 0 auto 1rem; text-align: center; }
+  .contact-sub {
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    font-size: 0.95rem;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.5rem;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-link:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .footer-copy {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 100%;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * { animation: fadeUp 0.7s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.35s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.5s; }
+  .hero-card { animation: fadeUp 0.8s 0.4s ease both; }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 7rem 1.5rem 3rem;
+      gap: 2.5rem;
+    }
+    .hero-content { padding-right: 0; }
+    section { padding: 4rem 1.5rem; }
+    .project-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-template-columns: 1fr; }
+    .toolkit-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .contact-section { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">L. Kimani</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#toolkit">Toolkit</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#blogs">Blogs</a>/li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="about">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Portfolio &amp; Accomplishments &amp; Legal Tech</div>
+    <h1>Lawrence<br><em>Kimani<br>Njuguna</em></h1>
+    <p class="hero-bio">
+      I am a law student passionate about the intersection of technology and law. My goal is to revolutionise traditional legal practice with the emerging trends in technology-bridging the gap between jurisprudence and innovation in Kenya.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <div class="avatar-ring">LK</div>
+    <div style="font-weight:500; font-size:1.05rem; color:var(--text); margin-bottom:0.2rem;">Lawrence Kimani Njuguna</div>
+    <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.3rem;">Law Student · Legal Tech Enthusiast</div>
+    <div style="font-size:0.78rem; color:var(--text-dim); font-family:'DM Mono',monospace; margin-bottom:1.25rem;">📍 Nairobi, Kenya</div>
+
+    <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.7; margin-bottom:1rem; padding-bottom:1.25rem; border-bottom:0.5px solid var(--border);">
+      Law student at Chuka University passionate about revolutionising legal practice through technology. Judicial attaché, community volunteer, and legal tech builder.
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Certificates</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Projects</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4</span>
+        <span class="stat-label">Tools Planned</span>
+      </div>
+    </div>
+
+    <div class="badge-row">
+      <span class="badge">Legal Research</span>
+      <span class="badge">Automation</span>
+      <span class="badge">LegalTech</span>
+      <span class="badge">Contract Law</span>
+      <span class="badge">AI & Law</span>
+      <span class="badge">Cybersecurity</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- EDUCATION & EXPERIENCE -->
+<section>
+  <div class="section-label">Background</div>
+  <h2 class="section-title">Education &amp; Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">Sep 2023 – Dec 2027 (Expected)</div>
+      <div class="timeline-role">Bachelor of Laws (LLB)</div>
+      <div class="timeline-org">Chuka University — School of Law</div>
+      <div class="timeline-desc">Pursuing a comprehensive legal education covering commercial law, constitutional law, criminal law, and the emerging intersections of technology and legal practice. Actively engaged in legal research and tech-driven initiatives throughout the programme.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">May 13, 2026 – June 2026</div>
+      <div class="timeline-role">Judicial Attaché</div>
+      <div class="timeline-org">Thika Law Courts</div>
+      <div class="timeline-desc">Gained hands-on exposure to court proceedings, case management, and the day-to-day administration of justice. Observed civil and criminal matters, assisted with legal research, and developed a deep appreciation for procedural law in practice.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Ongoing</div>
+      <div class="timeline-role">Community Volunteer</div>
+      <div class="timeline-org">Ubuntu Community Based Organization &amp; SHOFCO</div>
+      <div class="timeline-desc">Volunteered with Ubuntu CBO and the Shining Hope for Communities (SHOFCO) organisation — contributing to community empowerment, legal awareness outreach, and access-to-justice initiatives for underserved communities in Githurai, Kenya.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Two Terms · Chuka University</div>
+      <div class="timeline-role">Scrabble Captain</div>
+      <div class="timeline-org">Chuka University — Sports & Recreation</div>
+      <div class="timeline-desc">Served as Scrabble Captain for two consecutive terms, leading the university team in competitive play. Developed strong leadership, strategic thinking, team coordination, and communication skills — qualities that translate directly into legal advocacy and professional practice.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">June – August 2025</div>
+      <div class="timeline-role">Legal Intern</div>
+      <div class="timeline-org">Muatine &amp; Co. Advocates</div>
+      <div class="timeline-desc">Completed a two-month internship at Muatine & Co. Advocates, gaining practical exposure to legal practice management, client advisory, file management, court attendance, and document drafting in a professional law firm environment.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2024 – Present</div>
+      <div class="timeline-role">Legal Tech Builder</div>
+      <div class="timeline-org">Personal Initiative</div>
+      <div class="timeline-desc">Independently developing a suite of legal automation tools designed to simplify legal workflows — from contract analysis to deadline tracking — with the vision of making legal services more accessible and efficient across Kenya and East Africa.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">Certificates &amp; Courses</h2>
+  <div class="cert-grid">
+
+    <div class="cert-card">
+      <div class="cert-icon">🛡️</div>
+      <div class="cert-title">Introduction to Cybersecurity</div>
+      <div class="cert-issuer">Cisco Networking Academy</div>
+      <div class="cert-date">Completed: May 12, 2025</div>
+      <a href="https://drive.google.com/file/d/1F73gRexzCBDopyjRueVUFRTO1YnS7cjK/view?usp=drive_link" class="cert-verify" target="_blank">View certificate →</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">⚖️</div>
+      <div class="cert-title">Business Law</div>
+      <div class="cert-issuer">Saylor University</div>
+      <div class="cert-date">Completed: April 25, 2026</div>
+      <a href="https://drive.google.com/file/d/13V2Vk7oA90URcxZ9nBkmIir-n86kFZv8/view?usp=drive_link" class="cert-verify" target="_blank">View certificate →</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">💡</div>
+      <div class="cert-title">General Course on Intellectual Property</div>
+      <div class="cert-issuer">World Intellectual Property Organisation (WIPO)</div>
+      <div class="cert-date">Completed: May 8, 2026 · Certificate pending</div>
+      <span class="cert-verify" style="cursor:default; opacity:0.5; border-bottom-color:transparent;">Certificate coming soon</span>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">🩺</div>
+      <div class="cert-title">Medical Law and Terminology in Practice</div>
+      <div class="cert-issuer">Alison</div>
+      <div class="cert-date">Completed: May 8, 2026</div>
+      <a href="https://drive.google.com/file/d/1UgaxbhKRqd7vXmJWnf7gjdHYsit75oxg/view?usp=drive_link" class="cert-verify" target="_blank">View certificate →</a>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">😎</div>
+      <div class="cert-title"> Zoom Online Freelancing Work Readiness Training/Mentorship</div>
+      <div class="cert-issuer">Ajira Digital Program</div>
+      <div class="cert-date">Monday 20th May, 2024</div>
+      <a href="https://drive.google.com/file/d/10cCEKu8OgcQsqOlm35iDvqHuld6ZKlV3/view?usp=drive_link" class="cert-verify" target="_blank">View certificate →</a>
+    </div>
+
+    <div class="cert-card" style="border-style: dashed; opacity: 0.45;">
+      <div class="cert-icon">＋</div>
+      <div class="cert-title" style="color:var(--text-dim);">Certificate Slot 6</div>
+      <div class="cert-issuer" style="color:var(--text-dim);">Coming soon</div>
+      <div class="cert-date">—</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Work</div>
+  <h2 class="section-title">Projects &amp; Research</h2>
+  <div class="project-grid">
+
+    <!-- FEATURED PROJECT -->
+    <div class="project-card featured">
+      <div>
+        <span class="project-tag">Featured · Afro-IP Law &amp; Tech Competition 2026</span>
+        <div class="project-title">Kenya Children Data Hub</div>
+        <p class="project-desc">
+          As part of Team Conquest, we developed a system to protect trafficked children and children in conflict with the law. The Kenya Children Data Hub leverages technology to safeguard vulnerable children's data, ensuring their rights, privacy, and welfare are upheld within Kenya's legal framework. Presented at the Afro-IP Law &amp; Tech Competition 2026 under the theme <em>Intersection of Technology and Law.</em>
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Child Rights Law</span>
+          <span class="stack-pill">Data Protection</span>
+          <span class="stack-pill">Legal Tech</span>
+          <span class="stack-pill">Team Conquest</span>
+          <span class="stack-pill">Afro-IP 2026</span>
+        </div>
+        <a href="https://drive.google.com/file/d/1Lk-Prhn-JO2Q5gzPlDsad8vtVUxY06dW/view?usp=drive_link" class="cert-verify" target="_blank" style="margin-top:1.25rem; display:inline-block;">View project →</a>
+      </div>
+      <div class="project-visual">
+        <div><span class="code-green"># Kenya Children Data Hub</span></div>
+        <div style="margin-top:0.5rem;"><span class="code-gold">Team Conquest · Afro-IP 2026</span></div>
+        <div style="margin-top:0.75rem; color:var(--text-dim);">Theme: Tech × Law</div>
+        <div style="margin-top:0.75rem;"><span class="code-green">✓ Child trafficking protection</span></div>
+        <div><span class="code-green">✓ Children in conflict w/ law</span></div>
+        <div><span class="code-green">✓ Data privacy safeguards</span></div>
+        <div><span class="code-green">✓ Kenya legal framework</span></div>
+        <div style="margin-top:0.75rem;"><span class="code-blue">Status:</span> <span style="color:var(--gold);">Competition Entry</span></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Research Paper · Legal Automation</span>
+      <div class="project-title">Legal Automation — Research Paper</div>
+      <p class="project-desc">
+        Research paper about policy formulation in the Kenya Children's Data Hub
+      </p>
+      <div class="project-stack">
+        <span class="stack-pill">Legal Research</span>
+        <span class="stack-pill">LegalTech</span>
+        <span class="stack-pill">Policy</span>
+      </div>
+      <a href="https://docs.google.com/document/d/1M4OpVCDxHGaBwX-5wzMjbNom2ZW1xTEj7EVeAq_bZB0/edit?usp=drive_link" class="cert-verify" target="_blank" style="margin-top:1.25rem; display:inline-block;">Read paper →</a>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Collaboration · AI Legal Platform</span>
+      <div class="project-title">WakiliAI — Policy Formulation</div>
+      <p class="project-desc">
+        Contributed policy formulation and legal framework advisory to WakiliAI — an AI-powered legal platform built to make legal services more accessible to Kenyans. Helped shape the governance and ethical policy layer of the platform.
+      </p>
+      <div class="project-stack">
+        <span class="stack-pill">AI Policy</span>
+        <span class="stack-pill">Legal Ethics</span>
+        <span class="stack-pill">Access to Justice</span>
+        <span class="stack-pill">Collaboration</span>
+      </div>
+      <a href="https://wakili-ai-law.base44.app/" class="cert-verify" target="_blank" style="margin-top: 1.25rem; display: inline-block;">Read paper</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TOOLKIT SECTION - IMPROVED -->
+<section id="toolkit">
+  <div class="section-label">Legal Automation Toolkit</div>
+  <h2 class="section-title">Personal Legal Automation Suite</h2>
+  
+  <div class="toolkit-grid">
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon-box">👤</div>
+        <div>
+          <div class="tool-name">Client Intake & Management</div>
+          <div class="tool-type">Privacy · Confidentiality</div>
+        </div>
+      </div>
+      <p class="tool-desc">Automates the onboarding of new clients into a law firm — capturing personal details, conflict checks, and engagement letters while strictly enforcing data privacy and attorney-client confidentiality obligations under Kenyan law.</p>
+      <ul class="tool-features">
+        <li>Secure client intake forms</li>
+        <li>Automated conflict-of-interest checks</li>
+        <li>Kenya DPA 2019 compliance</li>
+        <li>Digital engagement letter generation</li>
+      </ul>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon-box">📁</div>
+        <div>
+          <div class="tool-name">Case Management System</div>
+          <div class="tool-type">Workflow · Tracking</div>
+        </div>
+      </div>
+      <p class="tool-desc">A centralised dashboard for tracking active matters, assigning tasks, monitoring case progress, and maintaining a full audit trail — reducing administrative overhead and keeping every case on schedule.</p>
+      <ul class="tool-features">
+        <li>Matter lifecycle tracking</li>
+        <li>Task assignment & deadlines</li>
+        <li>Client communication logs</li>
+        <li>Automated status updates</li>
+      </ul>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon-box">🏛️</div>
+        <div>
+          <div class="tool-name">Court Filing & Compliance</div>
+          <div class="tool-type">Procedural Law · Automation</div>
+        </div>
+      </div>
+      <p class="tool-desc">Streamlines the preparation and tracking of court filings — generating compliant documents, calculating limitation periods, and flagging upcoming deadlines to ensure full procedural compliance.</p>
+      <ul class="tool-features">
+        <li>Filing deadline calculator</li>
+        <li>Court-ready document formatting</li>
+        <li>Limitation period alerts</li>
+        <li>Compliance checklist per matter</li>
+      </ul>
+    </div>
+
+    <div class="tool-card" style="grid-column: 1 / -1;">
+      <div class="tool-header">
+        <div class="tool-icon-box">📝</div>
+        <div>
+          <div class="tool-name">AI Document Drafting Assistant</div>
+          <div class="tool-type">AI-Powered · Kenya Law · Live</div>
+        </div>
+      </div>
+
+      <!-- DRAFTING FORM -->
+      <div style="margin-top: 1rem;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div>
+            <label style="font-size: 0.72rem; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 6px;">Document Type</label>
+            <select id="docType" style="width: 100%; background: var(--dark-3); color: var(--text); border: 0.5px solid var(--border-bright); border-radius: var(--radius); padding: 9px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; cursor: pointer;">
+              <option value="">Select document type...</option>
+              <option value="demand_letter">Demand Letter</option>
+              <option value="nda">Non-Disclosure Agreement (NDA)</option>
+              <option value="employment_contract">Employment Contract</option>
+              <option value="sale_agreement">Sale Agreement</option>
+              <option value="affidavit">Affidavit</option>
+              <option value="tenancy_agreement">Tenancy Agreement</option>
+              <option value="power_of_attorney">Power of Attorney</option>
+              <option value="cease_desist">Cease &amp; Desist Letter</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size: 0.72rem; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 6px;">Jurisdiction</label>
+            <select id="jurisdiction" style="width: 100%; background: var(--dark-3); color: var(--text); border: 0.5px solid var(--border-bright); border-radius: var(--radius); padding: 9px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; cursor: pointer;">
+              <option value="Kenya">Kenya (default)</option>
+              <option value="Uganda">Uganda</option>
+              <option value="Tanzania">Tanzania</option>
+              <option value="Rwanda">Rwanda</option>
+              <option value="Ethiopia">Ethiopia</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div>
+            <label style="font-size: 0.72rem; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 6px;">Client / Party 1 Name</label>
+            <input type="text" id="party1" placeholder="e.g. John Kamau" style="width: 100%; box-sizing: border-box; background: var(--dark-3); color: var(--text); border: 0.5px solid var(--border-bright); border-radius: var(--radius); padding: 9px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none;" />
+          </div>
+          <div>
+            <label style="font-size: 0.72rem; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 6px;">Opposing Party / Party 2 Name</label>
+            <input type="text" id="party2" placeholder="e.g. Acme Ltd" style="width: 100%; box-sizing: border-box; background: var(--dark-3); color: var(--text); border: 0.5px solid var(--border-bright); border-radius: var(--radius); padding: 9px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none;" />
+          </div>
+        </div>
+
+        <div style="margin-bottom: 12px;">
+          <label style="font-size: 0.72rem; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 6px;">Brief Description of the Matter</label>
+          <textarea id="matterDesc" placeholder="Describe the key facts, amounts, dates, and any specific clauses you want included..." style="width: 100%; box-sizing: border-box; background: var(--dark-3); color: var(--text); border: 0.5px solid var(--border-bright); border-radius: var(--radius); padding: 10px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; height: 90px; resize: vertical; line-height: 1.6;"></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+          <div>
+            <label style="font-size: 0.72rem; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 6px;">Tone</label>
+            <select id="tone" style="width: 100%; background: var(--dark-3); color: var(--text); border: 0.5px solid var(--border-bright); border-radius: var(--radius); padding: 9px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; cursor: pointer;">
+              <option value="formal">Formal &amp; professional</option>
+              <option value="assertive">Assertive &amp; firm</option>
+              <option value="conciliatory">Conciliatory &amp; cooperative</option>
+              <option value="urgent">Urgent &amp; demanding</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size: 0.72rem; color: var(--text-dim); font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; display: block; margin-bottom: 6px;">Output Language</label>
+            <select id="language" style="width: 100%; background: var(--dark-3); color: var(--text); border: 0.5px solid var(--border-bright); border-radius: var(--radius); padding: 9px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; cursor: pointer;">
+              <option value="English">English</option>
+              <option value="Swahili">Swahili</option>
+            </select>
+          </div>
+        </div>
+
+        <button id="generateBtn" onclick="generateDoc()" style="width: 100%; padding: 11px; font-size: 0.88rem; font-weight: 500; cursor: pointer; background: var(--gold); color: var(--dark); border: none; border-radius: var(--radius); font-family: 'DM Sans', sans-serif; letter-spacing: 0.04em; transition: background 0.2s, transform 0.15s;">
+          ✦ Generate Document
+        </button>
+
+        <div id="draftError" style="display: none; margin-top: 10px; padding: 10px 14px; border-radius: var(--radius); font-size: 0.8rem; background: rgba(220,53,69,0.1); color: #ff6b6b; border: 0.5px solid rgba(220,53,69,0.3); font-family: 'DM Mono', monospace;"></div>
+
+        <div id="draftStatus" style="display: none; margin-top: 10px; padding: 10px 14px; border-radius: var(--radius); font-size: 0.8rem; background: rgba(201,168,76,0.08); color: var(--gold); border: 0.5px solid var(--border); font-family: 'DM Mono', monospace;">
+          ⟳ Drafting your document...
+        </div>
+
+        <div id="outputSection" style="display: none; margin-top: 1.25rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <span style="font-size: 0.72rem; color: var(--gold); font-family: 'DM Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase;">Generated Document</span>
+            <div style="display: flex; gap: 8px;">
+              <button onclick="copyDraft()" style="font-size: 0.75rem; padding: 5px 12px; cursor: pointer; background: transparent; color: var(--text-muted); border: 0.5px solid var(--border); border-radius: var(--radius); font-family: 'DM Mono', monospace; transition: border-color 0.2s, color 0.2s;">Copy</button>
+              <button onclick="downloadDraft()" style="font-size: 0.75rem; padding: 5px 12px; cursor: pointer; background: transparent; color: var(--gold); border: 0.5px solid var(--border-bright); border-radius: var(--radius); font-family: 'DM Mono', monospace; transition: border-color 0.2s;">Download .txt</button>
+            </div>
+          </div>
+          <div id="docOutput" style="background: var(--dark-3); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem; font-size: 0.8rem; line-height: 1.85; white-space: pre-wrap; max-height: 500px; overflow-y: auto; color: var(--text-muted); font-family: 'DM Mono', monospace;"></div>
+          <p style="font-size: 0.68rem; color: var(--text-dim); margin-top: 8px; font-family: 'DM Mono', monospace;">
+            ⚠ AI-generated draft — review and verify with a qualified advocate before use.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      @keyframes rotateSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      #generateBtn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    </style>
+
+    <script>
+      var _draftText = '';
+
+      async function generateDoc() {
+        var docType = document.getElementById('docType').value;
+        var party1 = document.getElementById('party1').value.trim();
+        var party2 = document.getElementById('party2').value.trim();
+        var matter = document.getElementById('matterDesc').value.trim();
+        var tone = document.getElementById('tone').value;
+        var jurisdiction = document.getElementById('jurisdiction').value;
+        var language = document.getElementById('language').value;
+        var errEl = document.getElementById('draftError');
+        var statusEl = document.getElementById('draftStatus');
+
+        errEl.style.display = 'none';
+        if (!docType) { errEl.textContent = '✗ Please select a document type.'; errEl.style.display = 'block'; return; }
+        if (!party1)  { errEl.textContent = '✗ Please enter Party 1 name.'; errEl.style.display = 'block'; return; }
+        if (!matter)  { errEl.textContent = '✗ Please describe the matter.'; errEl.style.display = 'block'; return; }
+
+        var btn = document.getElementById('generateBtn');
+        btn.disabled = true;
+        btn.textContent = '⟳ Generating...';
+        statusEl.style.display = 'block';
+        document.getElementById('outputSection').style.display = 'none';
+
+        var docLabels = { demand_letter:'Demand Letter', nda:'Non-Disclosure Agreement', employment_contract:'Employment Contract', sale_agreement:'Sale Agreement', affidavit:'Affidavit', tenancy_agreement:'Tenancy Agreement', power_of_attorney:'Power of Attorney', cease_desist:'Cease & Desist Letter' };
+        var toneLabels = { formal:'formal and professional', assertive:'assertive and firm', conciliatory:'conciliatory and cooperative', urgent:'urgent and demanding' };
+
+        var prompt = 'You are a senior advocate specialising in ' + jurisdiction + ' law and East African jurisdictions. Draft a complete, professional, court-ready ' + docLabels[docType] + ' in ' + language + '.\n\nPARTIES:\n- Party 1: ' + party1 + '\n- Party 2: ' + (party2 || 'Not specified') + '\n\nMATTER: ' + matter + '\n\nREQUIREMENTS:\n- Tone: ' + toneLabels[tone] + '\n- Jurisdiction: ' + jurisdiction + ' law\n- Include all standard legal clauses, proper headings, date placeholders (e.g. [DATE]), signature blocks, and witness lines where applicable\n- Reference relevant ' + jurisdiction + ' statutes and regulations where appropriate\n- Include a reference number (e.g. REF: [FIRM]/[YEAR]/[NUMBER])\n- Format as a complete, ready-to-use document\n\nOutput only the document text. No preamble, no explanation — just the document.';
+
+        try {
+          var response = await fetch('/api/draft', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              messages: [{ role: 'user', content: prompt }]
+            })
+          });
+          var data = await response.json();
+          if (data.error) throw new Error(data.error.message);
+          _draftText = data.content.map(function(b){ return b.text || ''; }).join('');
+          document.getElementById('docOutput').textContent = _draftText;
+          document.getElementById('outputSection').style.display = 'block';
+          statusEl.style.display = 'none';
+        } catch(err) {
+          statusEl.style.display = 'none';
+          errEl.textContent = '✗ ' + err.message;
+          errEl.style.display = 'block';
+        }
+
+        btn.disabled = false;
+        btn.textContent = '✦ Generate Document';
+      }
+
+      function copyDraft() {
+        if (!_draftText) return;
+        navigator.clipboard.writeText(_draftText).then(function() {
+          var btn = event.currentTarget;
+          var orig = btn.textContent;
+          btn.textContent = '✓ Copied';
+          setTimeout(function(){ btn.textContent = orig; }, 1500);
+        });
+      }
+
+      function downloadDraft() {
+        if (!_draftText) return;
+        var docType = document.getElementById('docType').value || 'document';
+        var blob = new Blob([_draftText], { type: 'text/plain' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = docType + '_draft.txt';
+        a.click();
+      }
+    </script>
+
+  </div>
+
+  <p style="font-size:0.78rem; color:var(--text-dim); margin-top:2.5rem; font-family:'DM Mono',monospace; text-align:center;">
+    🚧 &nbsp; This toolkit is currently under active development — built to modernise legal practice across Kenya and East Africa.
+  </p>
+</section>
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="section-label" style="justify-content:center; margin-bottom:0.75rem;">
+    <span>Connect</span>
+  </div>
+  <h2 class="section-title">Let's Build Something Together</h2>
+  <p class="contact-sub">
+    Whether you're a fellow law student, a legal professional curious about tech, or a builder looking to collaborate — I'm always open to a conversation.
+  </p>
+  <div class="contact-links">
+   <a 
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=lorenzoreap254@gmail.com&su=Portfolio%20Inquiry%20-%20Lawrence%20Kimani"
+  class="contact-link"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  ✉️ Email Me Directly
+</a>
+    <a href="https://www.linkedin.com/in/lawrence-kimani-9aa30a363" class="contact-link" target="_blank">
+      in LinkedIn
+    </a>
+    <a href="https://github.com/Mysticcoder7/Tech-lawyer" class="contact-link" target="_blank">
+      ⌥ GitHub
+    </a>
+    <a href="https://drive.google.com/file/d/1eKf9ekgsBKovmZxqcg0Z763LxZzDapQD/view?usp=drive_link" class="contact-link" target="_blank">
+      📄 Download CV
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Lawrence Kimani Njuguna </div>
+  <div class="footer-copy">© 2025 · Built with purpose &amp; precision · Nairobi, Kenya</div>
+</footer>
+
+</body>
+</html>
